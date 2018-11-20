@@ -21,6 +21,7 @@ struct ApplePayToken: Decodable {
 }
 
 struct ApplePayTokenHeader: Decodable {
+    let applicationData: String?
     let transactionId: String
     let publicKeyHash: String
     let ephemeralPublicKey: String

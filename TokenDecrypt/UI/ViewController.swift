@@ -10,13 +10,16 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var popupButton: NSPopUpButton!
+    @IBOutlet weak var statusLabel: NSTextField!
+    @IBOutlet weak var decryptButton: NSButton!
+    @IBOutlet var textView: NSTextView!
     
+    fileprivate let tokenService = TokenService()
     fileprivate let service = KeychainService()
     fileprivate var certificates: [ApplePayCertificate] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.updateCertificates(self)
     }
     
@@ -35,5 +38,19 @@ class ViewController: NSViewController {
         let certNames = self.certificates.map { $0.name }
         self.popupButton.addItems(withTitles: certNames)
     }
+    
+    @IBAction func decryptToken(_ sender: Any) {
+        
+    }
 }
 
+extension ViewController: NSTextViewDelegate {
+    func textDidChange(_ notification: Notification) {
+        self.verifyToken()
+    }
+    
+    fileprivate func verifyToken() {
+        let tokenStr = self.textView.string
+        self.tokenService.verifyToken(tokenStr)
+    }
+}

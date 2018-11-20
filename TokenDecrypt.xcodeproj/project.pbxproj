@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1A3744219DFC6700B118F5 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1A3743219DFC6700B118F5 /* TokenService.swift */; };
 		7C5B3BA821943B3600D55350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B3BA721943B3600D55350 /* AppDelegate.swift */; };
 		7C5B3BAA21943B3600D55350 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B3BA921943B3600D55350 /* ViewController.swift */; };
 		7C5B3BAC21943B3700D55350 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B3BAB21943B3700D55350 /* Assets.xcassets */; };
 		7C5B3BAF21943B3700D55350 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B3BAD21943B3700D55350 /* Main.storyboard */; };
 		7C5B3BB821943EEC00D55350 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B3BB721943EEC00D55350 /* KeychainService.swift */; };
 		7C60265E2196CFB3005E77DE /* ApplePayToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60265D2196CFB3005E77DE /* ApplePayToken.swift */; };
+		7C648A5921A1D04D00CC4AE9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C648A5821A1D04D00CC4AE9 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C1A3743219DFC6700B118F5 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		7C5B3BA421943B3600D55350 /* TokenDecrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenDecrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5B3BA721943B3600D55350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C5B3BA921943B3600D55350 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,6 +28,7 @@
 		7C5B3BB121943B3700D55350 /* TokenDecrypt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TokenDecrypt.entitlements; sourceTree = "<group>"; };
 		7C5B3BB721943EEC00D55350 /* KeychainService.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		7C60265D2196CFB3005E77DE /* ApplePayToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayToken.swift; sourceTree = "<group>"; };
+		7C648A5821A1D04D00CC4AE9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +64,26 @@
 				7C5B3BA721943B3600D55350 /* AppDelegate.swift */,
 				7CBCB1CC219DF2A100484F80 /* Model */,
 				7CBCB1CB219DF29C00484F80 /* UI */,
+				7C648A5621A1D03400CC4AE9 /* Common */,
 				7CBCB1CE219DF5C100484F80 /* Resources */,
 			);
 			path = TokenDecrypt;
+			sourceTree = "<group>";
+		};
+		7C648A5621A1D03400CC4AE9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7C648A5721A1D04100CC4AE9 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7C648A5721A1D04100CC4AE9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C648A5821A1D04D00CC4AE9 /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7CBCB1CB219DF29C00484F80 /* UI */ = {
@@ -77,6 +98,7 @@
 		7CBCB1CC219DF2A100484F80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C1A3743219DFC6700B118F5 /* TokenService.swift */,
 				7C5B3BB721943EEC00D55350 /* KeychainService.swift */,
 				7CBCB1CD219DF2B400484F80 /* Entities */,
 			);
@@ -177,10 +199,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C648A5921A1D04D00CC4AE9 /* String.swift in Sources */,
 				7C5B3BAA21943B3600D55350 /* ViewController.swift in Sources */,
 				7C5B3BA821943B3600D55350 /* AppDelegate.swift in Sources */,
 				7C5B3BB821943EEC00D55350 /* KeychainService.swift in Sources */,
 				7C60265E2196CFB3005E77DE /* ApplePayToken.swift in Sources */,
+				7C1A3744219DFC6700B118F5 /* TokenService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

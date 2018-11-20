@@ -706,11 +706,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="531" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="562" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4A-wE-7CK">
-                                <rect key="frame" x="18" y="226" width="418" height="25"/>
+                                <rect key="frame" x="18" y="254" width="449" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Select Certificate" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ngu-8b-dYj" id="scJ-V4-hkp">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -722,7 +722,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LoV-Va-sHS">
-                                <rect key="frame" x="435" y="222" width="82" height="32"/>
+                                <rect key="frame" x="466" y="250" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="4a6-oi-LrK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -731,22 +731,91 @@
                                     <action selector="updateCertificates:" target="XfG-lQ-9wD" id="gP7-yu-q7l"/>
                                 </connections>
                             </button>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-8e-sK0">
+                                <rect key="frame" x="20" y="49" width="522" height="200"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Arh-aK-mMS">
+                                    <rect key="frame" x="0.0" y="0.0" width="522" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="7JJ-8D-FLo">
+                                            <rect key="frame" x="0.0" y="0.0" width="522" height="1008"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="522" height="200"/>
+                                            <size key="maxSize" width="539" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment>
+                                                    <mutableString key="content">eyJ2ZXJzaW9uIjoiRUNfdjEiLCJkYXRhIjoiZFdWaWoweENia0NKbUVVVmVrZTR3MjhRWDkyU1FrNHU3TlcydnkxNjJsdkJ6T0h2UGdLMTZMSnlseG1sMnpZTTBMbXhDUktoVnZESlFRNHNLU2lKcW8yMC9nWkhOUURJRzk0Y2gzb1Nad1o1eDR1ZkZRSzhJVUI3enRFRnpveWF6T0JlNHBBQ3dGMFlwT09qemdpYmRreDZFR3g2dE1pR0JBQ2M1Q25GNmNXVGlhMERsZGl6eVlzTDIwS2V6QURNQ1Vwc0hkM09HWjZDNURYOUc2RFlPcExZcWVOeDNNMlg5SVBTQ1dhL0t3eERLb1dSRDJ4Ulp5VHJzaWJMUDBKRUoyb3NXRExZbjBiSHZKSWdFZnZTR3VuT0pXdXkyMUlyT0hMQ0x6Q3ZURUVOM3ppanE5VzJMNUdHSC9ZNEJUR0w4emlNOFNlNjZZQytFMldqYmhGS1FCR0drY0orcVBvUGJLSnpMTkxsRmJ0R0NMWDhoVEo3enErUUdXSFpiMUZ3Umk3Rm9qZnd3d1pmNTh5Ri8vaz0iLCJzaWduYXR1cmUiOiJNSUFHQ1NxR1NJYjNEUUVIQXFDQU1JQUNBUUV4RHpBTkJnbGdoa2dCWlFNRUFnRUZBRENBQmdrcWhraUc5dzBCQndFQUFLQ0FNSUlENGpDQ0E0aWdBd0lCQWdJSUpFUHlxQWFkOVhjd0NnWUlLb1pJemowRUF3SXdlakV1TUN3R0ExVUVBd3dsUVhCd2JHVWdRWEJ3YkdsallYUnBiMjRnU1c1MFpXZHlZWFJwYjI0Z1EwRWdMU0JITXpFbU1DUUdBMVVFQ3d3ZFFYQndiR1VnUTJWeWRHbG1hV05oZEdsdmJpQkJkWFJvYjNKcGRIa3hFekFSQmdOVkJBb01Da0Z3Y0d4bElFbHVZeTR4Q3pBSkJnTlZCQVlUQWxWVE1CNFhEVEUwTURreU5USXlNRFl4TVZvWERURTVNRGt5TkRJeU1EWXhNVm93WHpFbE1DTUdBMVVFQXd3Y1pXTmpMWE50Y0MxaWNtOXJaWEl0YzJsbmJsOVZRelF0VUZKUFJERVVNQklHQTFVRUN3d0xhVTlUSUZONWMzUmxiWE14RXpBUkJnTlZCQW9NQ2tGd2NHeGxJRWx1WXk0eEN6QUpCZ05WQkFZVEFsVlRNRmt3RXdZSEtvWkl6ajBDQVFZSUtvWkl6ajBEQVFjRFFnQUV3aFYzN2V2V3g3SWhqMmpkY0pDaElZM0hzTDF2TENnOWhHQ1YyVXIwcFVFYmcwSU8yQkh6UUg2RE14OGNWTVAzNnpJZzFyclYxTy8wa29tSlBud1BFNk9DQWhFd2dnSU5NRVVHQ0NzR0FRVUZCd0VCQkRrd056QTFCZ2dyQmdFRkJRY3dBWVlwYUhSMGNEb3ZMMjlqYzNBdVlYQndiR1V1WTI5dEwyOWpjM0F3TkMxaGNIQnNaV0ZwWTJFek1ERXdIUVlEVlIwT0JCWUVGSlJYMjIvVmRJR0dpWWwyTDM1WGhRZm5tMWdrTUF3R0ExVWRFd0VCL3dRQ01BQXdId1lEVlIwakJCZ3dGb0FVSS9KSnhFK1Q1TzhuNXNUMktHdy9vcnY5TGtzd2dnRWRCZ05WSFNBRWdnRVVNSUlCRURDQ0FRd0dDU3FHU0liM1kyUUZBVENCL2pDQnd3WUlLd1lCQlFVSEFnSXdnYllNZ2JOU1pXeHBZVzVqWlNCdmJpQjBhR2x6SUdObGNuUnBabWxqWVhSbElHSjVJR0Z1ZVNCd1lYSjBlU0JoYzNOMWJXVnpJR0ZqWTJWd2RHRnVZMlVnYjJZZ2RHaGxJSFJvWlc0Z1lYQndiR2xqWVdKc1pTQnpkR0Z1WkdGeVpDQjBaWEp0Y3lCaGJtUWdZMjl1WkdsMGFXOXVjeUJ2WmlCMWMyVXNJR05sY25ScFptbGpZWFJsSUhCdmJHbGplU0JoYm1RZ1kyVnlkR2xtYVdOaGRHbHZiaUJ3Y21GamRHbGpaU0J6ZEdGMFpXMWxiblJ6TGpBMkJnZ3JCZ0VGQlFjQ0FSWXFhSFIwY0RvdkwzZDNkeTVoY0hCc1pTNWpiMjB2WTJWeWRHbG1hV05oZEdWaGRYUm9iM0pwZEhrdk1EUUdBMVVkSHdRdE1Dc3dLYUFub0NXR0kyaDBkSEE2THk5amNtd3VZWEJ3YkdVdVkyOXRMMkZ3Y0d4bFlXbGpZVE11WTNKc01BNEdBMVVkRHdFQi93UUVBd0lIZ0RBUEJna3Foa2lHOTJOa0JoMEVBZ1VBTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSUhLS253K1NveXE1bVhRcjFWNjJjMEJYS3BhSG9kWXU5VFdYRVBVV1BwYnBBaUVBa1RlY2ZXNitXNWwwcjBBRGZ6VENQcTJZdGJTMzl3MDFYSWF5cUJOeThiRXdnZ0x1TUlJQ2RhQURBZ0VDQWdoSmJTKy9PcGphbHpBS0JnZ3Foa2pPUFFRREFqQm5NUnN3R1FZRFZRUUREQkpCY0hCc1pTQlNiMjkwSUVOQklDMGdSek14SmpBa0JnTlZCQXNNSFVGd2NHeGxJRU5sY25ScFptbGpZWFJwYjI0Z1FYVjBhRzl5YVhSNU1STXdFUVlEVlFRS0RBcEJjSEJzWlNCSmJtTXVNUXN3Q1FZRFZRUUdFd0pWVXpBZUZ3MHhOREExTURZeU16UTJNekJhRncweU9UQTFNRFl5TXpRMk16QmFNSG94TGpBc0JnTlZCQU1NSlVGd2NHeGxJRUZ3Y0d4cFkyRjBhVzl1SUVsdWRHVm5jbUYwYVc5dUlFTkJJQzBnUnpNeEpqQWtCZ05WQkFzTUhVRndjR3hsSUVObGNuUnBabWxqWVhScGIyNGdRWFYwYUc5eWFYUjVNUk13RVFZRFZRUUtEQXBCY0hCc1pTQkpibU11TVFzd0NRWURWUVFHRXdKVlV6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJQQVhFWVFaMTJTRjFScGVKWUVIZHVpQW91L2VlNjVONEkzOFM1UGhNMWJWWmxzMXJpTFFsM1lOSWs1N3VnajlkaGZPaU10MnUyWnd2c2pvS1lUL1ZFV2pnZmN3Z2ZRd1JnWUlLd1lCQlFVSEFRRUVPakE0TURZR0NDc0dBUVVGQnpBQmhpcG9kSFJ3T2k4dmIyTnpjQzVoY0hCc1pTNWpiMjB2YjJOemNEQTBMV0Z3Y0d4bGNtOXZkR05oWnpNd0hRWURWUjBPQkJZRUZDUHlTY1JQaytUdkorYkU5aWhzUDZLNy9TNUxNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdId1lEVlIwakJCZ3dGb0FVdTdEZW9WZ3ppSnFraXBuZXZyM3JyOXJMSktzd053WURWUjBmQkRBd0xqQXNvQ3FnS0lZbWFIUjBjRG92TDJOeWJDNWhjSEJzWlM1amIyMHZZWEJ3YkdWeWIyOTBZMkZuTXk1amNtd3dEZ1lEVlIwUEFRSC9CQVFEQWdFR01CQUdDaXFHU0liM1kyUUdBZzRFQWdVQU1Bb0dDQ3FHU000OUJBTUNBMmNBTUdRQ01EclBjb05SRnBteGh2czF3MWJLWXIvMEYrM1pEM1ZOb282KzhaeUJYa0szaWZpWTk1dFpuNWpWUVEyUG5lbkMvZ0l3TWkzVlJDR3dvd1YzYkYzek9EdVFaLzBYZkN3aGJaWlB4bkpwZ2hKdlZQaDZmUnVaeTVzSmlTRmhCcGtQQ1pJZEFBQXhnZ0dNTUlJQmlBSUJBVENCaGpCNk1TNHdMQVlEVlFRRERDVkJjSEJzWlNCQmNIQnNhV05oZEdsdmJpQkpiblJsWjNKaGRHbHZiaUJEUVNBdElFY3pNU1l3SkFZRFZRUUxEQjFCY0hCc1pTQkRaWEowYVdacFkyRjBhVzl1SUVGMWRHaHZjbWwwZVRFVE1CRUdBMVVFQ2d3S1FYQndiR1VnU1c1akxqRUxNQWtHQTFVRUJoTUNWVk1DQ0NSRDhxZ0duZlYzTUEwR0NXQ0dTQUZsQXdRQ0FRVUFvSUdWTUJnR0NTcUdTSWIzRFFFSkF6RUxCZ2txaGtpRzl3MEJCd0V3SEFZSktvWklodmNOQVFrRk1ROFhEVEU0TVRFd056QTROVFF3T1Zvd0tnWUpLb1pJaHZjTkFRazBNUjB3R3pBTkJnbGdoa2dCWlFNRUFnRUZBS0VLQmdncWhrak9QUVFEQWpBdkJna3Foa2lHOXcwQkNRUXhJZ1FnaGEwT0tUd0lWUEIycVNFdXRzVlZnb0xtRWNsK3Q3VUxSMVhDZDhXNTB2NHdDZ1lJS29aSXpqMEVBd0lFUnpCRkFpQnBIKzJyaDA4b1AvYzZwd0tJSFEwZGk2SHpNUXRVemkrSURUYTcrdUk1YWdJaEFLWXhINkFQOXlHQ05Gbk5uQStIay9iMHo1N0ZrY1pqamFYWjNsV2FyMzhkQUFBQUFBQUEiLCJoZWFkZXIiOnsiZXBoZW1lcmFsUHVibGljS2V5IjoiTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFOVVOTllXcDMyYzFvQjZwYXNzaEh1eXpwK3RFZ0ZWN0d5M0xVUUlaQzJaNkpHcUxoeXVEanMzbWQ2K3IxbE0xY09qTFR5a01PR3lxS3Zma0VXckNISkE9PSIsInB1YmxpY0tleUhhc2giOiJJRmtUMjFEWkF6UzBNRjZNemxYVkk3dlVCNjZ2M2dvZmRITUtwUUU4WXZnPSIsInRyYW5zYWN0aW9uSWQiOiJlMGE1ODI1NDRjNmYxNTg1ZDMzYjljNjc4MjBlOGM3Yjg4NmUyYjhhNGJiODEzZGVjYWYyM2M1ZjA2NDZkNzgwIn19</mutableString>
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="user"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="jLj-9l-IJI"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="y9F-fD-gI6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="yDo-yk-GnS"/>
+                                </constraints>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MBP-Cf-ko6">
+                                    <rect key="frame" x="506" y="0.0" width="16" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IzE-ZY-BzT">
+                                <rect key="frame" x="467" y="13" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9uI-jJ-P4x">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="decryptToken:" target="XfG-lQ-9wD" id="KPO-eV-6zX"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-4D-nTK">
+                                <rect key="frame" x="434" y="57" width="100" height="11"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enter ApplePay Token" drawsBackground="YES" id="LMm-GJ-hFz">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="LoV-Va-sHS" firstAttribute="leading" secondItem="d4A-wE-7CK" secondAttribute="trailing" constant="8" id="8TX-Y0-D8T"/>
                             <constraint firstItem="d4A-wE-7CK" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="LZk-ue-wlc"/>
                             <constraint firstItem="LoV-Va-sHS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ODm-8J-GZh"/>
+                            <constraint firstItem="8hf-4D-nTK" firstAttribute="bottom" secondItem="W7Z-8e-sK0" secondAttribute="bottom" constant="-8" id="Rdz-Kw-jTb"/>
+                            <constraint firstItem="8hf-4D-nTK" firstAttribute="trailing" secondItem="W7Z-8e-sK0" secondAttribute="trailing" constant="-8" id="Svf-xu-jqi"/>
+                            <constraint firstAttribute="trailing" secondItem="W7Z-8e-sK0" secondAttribute="trailing" constant="20" id="TMr-uc-HDn"/>
+                            <constraint firstItem="W7Z-8e-sK0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ZFx-jM-bhB"/>
+                            <constraint firstItem="IzE-ZY-BzT" firstAttribute="top" secondItem="W7Z-8e-sK0" secondAttribute="bottom" constant="8" id="a17-v8-DdX"/>
+                            <constraint firstAttribute="trailing" secondItem="IzE-ZY-BzT" secondAttribute="trailing" constant="20" id="bxZ-u5-JeF"/>
+                            <constraint firstAttribute="bottom" secondItem="IzE-ZY-BzT" secondAttribute="bottom" constant="20" id="cg4-Qg-EW0"/>
                             <constraint firstItem="d4A-wE-7CK" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="hga-ns-CER"/>
                             <constraint firstAttribute="trailing" secondItem="LoV-Va-sHS" secondAttribute="trailing" constant="20" id="huD-fQ-apg"/>
+                            <constraint firstItem="W7Z-8e-sK0" firstAttribute="top" secondItem="d4A-wE-7CK" secondAttribute="bottom" constant="8" id="ni5-6P-4Nn"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="decryptButton" destination="IzE-ZY-BzT" id="dQx-3d-1z4"/>
                         <outlet property="popupButton" destination="d4A-wE-7CK" id="YSR-79-LJw"/>
+                        <outlet property="statusLabel" destination="8hf-4D-nTK" id="aqJ-gD-5Tn"/>
+                        <outlet property="textView" destination="7JJ-8D-FLo" id="yqo-S7-U7N"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="le7-mn-RZ2"/>
             </objects>
-            <point key="canvasLocation" x="49.5" y="655"/>
+            <point key="canvasLocation" x="86" y="672"/>
         </scene>
     </scenes>
 </document>
