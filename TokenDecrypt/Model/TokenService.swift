@@ -13,7 +13,7 @@ fileprivate enum OID: String {
     case intermidiate = "1.2.840.113635.100.6.2.14"
 }
 
-enum TokenVerificationStatus {
+enum TokenSignatureVerificationStatus {
     case invalidTokenFormat
     case invalidSignature
     case noSignatureCertificates
@@ -23,11 +23,20 @@ enum TokenVerificationStatus {
 }
 
 class TokenService {
+    /**
+     Simple token validation. Token will be checked only for base64 and struct decoding.
+     */
     func isTokenValid(_ tokenStr: String) -> Bool {
         return self.token(fromString: tokenStr) != nil
     }
     
-    func verifyToken(_ tokenStr: String) -> TokenVerificationStatus {
+    /**
+     ApplePay signature verification
+     
+     - Parameters:
+        - tokenStr: Base64 encoded ApplePay token string
+     */
+    func verifyToken(_ tokenStr: String) -> TokenSignatureVerificationStatus {
         guard let token = self.token(fromString: tokenStr) else { return .invalidTokenFormat }
         
         return self.verifySignature(token.signature, ephemerialKey: token.header.ephemeralPublicKey, tokenData: token.data, transactionId: token.header.transactionId, applicationData: token.header.applicationData)
@@ -35,6 +44,14 @@ class TokenService {
 }
 
 extension TokenService {
+    /**
+     Decrypt base64 ApplePay token string into struct
+     
+     - Parameters:
+        - fromString: Base64 encoded ApplePay token string
+     
+     - Returns: Decoded ApplePay token struct
+     */
     fileprivate func token(fromString tokenStr: String) -> ApplePayToken? {
         if let tokenData = Data(base64Encoded: tokenStr), let token = try? JSONDecoder().decode(ApplePayToken.self, from: tokenData) {
             return token
@@ -43,7 +60,16 @@ extension TokenService {
         }
     }
     
-    fileprivate func verifySignature(_ signature: String, ephemerialKey: String, tokenData tokenDataStr: String, transactionId: String, applicationData appDataStr: String?) -> TokenVerificationStatus {
+    /**
+     Step 1 from [Payment Token Format Reference](https://developer.apple.com/library/archive/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html)
+     
+     - Parameters:
+        - signature: Base64 encoded signature
+        - ephemerialKey: Base64 encoded signature
+        - transactionId: Hexadecimal representation of transaction id
+        - applicationData: Hex encdoded SHA–256 hash of request object.
+     */
+    fileprivate func verifySignature(_ signature: String, ephemerialKey: String, tokenData tokenDataStr: String, transactionId: String, applicationData appDataStr: String?) -> TokenSignatureVerificationStatus {
         guard let ephData = Data(base64Encoded: ephemerialKey), let tokenData = Data(base64Encoded: tokenDataStr), let signatureData = Data(base64Encoded: signature) else {
             return .invalidSignature
         }
@@ -85,12 +111,12 @@ extension TokenService {
         
         guard leaf != nil, intermidiate != nil else { return .noSignatureCertificates }
         
-        var stat = CMSSignerStatus.needsDetachedContent
+        var signerStatus = CMSSignerStatus.needsDetachedContent
         var certResult: OSStatus = 0
-        CMSDecoderCopySignerStatus(decoder, 0, SecPolicyCreateBasicX509(), true, &stat, nil, &certResult)
+        CMSDecoderCopySignerStatus(decoder, 0, SecPolicyCreateBasicX509(), true, &signerStatus, nil, &certResult)
         
         guard certResult == 0 else { return .certificatesVerificationFailed }
-        guard stat == .valid else { return .signatureVerificationFailed }
+        guard signerStatus == .valid else { return .signatureVerificationFailed }
         
         return .valid
     }
