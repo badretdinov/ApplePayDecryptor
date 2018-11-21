@@ -10,7 +10,7 @@ import Cocoa
 import Security
 import CommonCrypto
 
-typealias ApplePayCertificate = (name: String, sertificate: SecCertificate, privateKey: SecKey?)
+typealias ApplePayCertificate = (name: String, certificate: SecCertificate, privateKey: SecKey?)
 
 enum KeychainError: Error {
     case certificatesFetchError(code: OSStatus)

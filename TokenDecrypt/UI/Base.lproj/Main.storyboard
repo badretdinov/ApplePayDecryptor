@@ -701,10 +701,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Master View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="MasterViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -771,8 +771,8 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IzE-ZY-BzT">
-                                <rect key="frame" x="467" y="13" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9uI-jJ-P4x">
+                                <rect key="frame" x="459" y="13" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="Decrypt" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9uI-jJ-P4x">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -781,11 +781,11 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-4D-nTK">
-                                <rect key="frame" x="434" y="57" width="100" height="11"/>
+                                <rect key="frame" x="20" y="30" width="100" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Enter ApplePay Token" drawsBackground="YES" id="LMm-GJ-hFz">
                                     <font key="font" metaFont="miniSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
@@ -793,15 +793,15 @@
                             <constraint firstItem="LoV-Va-sHS" firstAttribute="leading" secondItem="d4A-wE-7CK" secondAttribute="trailing" constant="8" id="8TX-Y0-D8T"/>
                             <constraint firstItem="d4A-wE-7CK" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="LZk-ue-wlc"/>
                             <constraint firstItem="LoV-Va-sHS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ODm-8J-GZh"/>
-                            <constraint firstItem="8hf-4D-nTK" firstAttribute="bottom" secondItem="W7Z-8e-sK0" secondAttribute="bottom" constant="-8" id="Rdz-Kw-jTb"/>
-                            <constraint firstItem="8hf-4D-nTK" firstAttribute="trailing" secondItem="W7Z-8e-sK0" secondAttribute="trailing" constant="-8" id="Svf-xu-jqi"/>
                             <constraint firstAttribute="trailing" secondItem="W7Z-8e-sK0" secondAttribute="trailing" constant="20" id="TMr-uc-HDn"/>
                             <constraint firstItem="W7Z-8e-sK0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ZFx-jM-bhB"/>
                             <constraint firstItem="IzE-ZY-BzT" firstAttribute="top" secondItem="W7Z-8e-sK0" secondAttribute="bottom" constant="8" id="a17-v8-DdX"/>
+                            <constraint firstItem="8hf-4D-nTK" firstAttribute="top" secondItem="W7Z-8e-sK0" secondAttribute="bottom" constant="8" id="aXy-o7-08W"/>
                             <constraint firstAttribute="trailing" secondItem="IzE-ZY-BzT" secondAttribute="trailing" constant="20" id="bxZ-u5-JeF"/>
                             <constraint firstAttribute="bottom" secondItem="IzE-ZY-BzT" secondAttribute="bottom" constant="20" id="cg4-Qg-EW0"/>
                             <constraint firstItem="d4A-wE-7CK" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="hga-ns-CER"/>
                             <constraint firstAttribute="trailing" secondItem="LoV-Va-sHS" secondAttribute="trailing" constant="20" id="huD-fQ-apg"/>
+                            <constraint firstItem="8hf-4D-nTK" firstAttribute="leading" secondItem="W7Z-8e-sK0" secondAttribute="leading" id="mjB-yb-v6L"/>
                             <constraint firstItem="W7Z-8e-sK0" firstAttribute="top" secondItem="d4A-wE-7CK" secondAttribute="bottom" constant="8" id="ni5-6P-4Nn"/>
                         </constraints>
                     </view>
@@ -810,12 +810,65 @@
                         <outlet property="popupButton" destination="d4A-wE-7CK" id="YSR-79-LJw"/>
                         <outlet property="statusLabel" destination="8hf-4D-nTK" id="aqJ-gD-5Tn"/>
                         <outlet property="textView" destination="7JJ-8D-FLo" id="yqo-S7-U7N"/>
+                        <segue destination="AMO-tu-3lv" kind="modal" identifier="DecryptedTokenSegue" id="xfM-bI-akX"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="le7-mn-RZ2"/>
             </objects>
-            <point key="canvasLocation" x="86" y="672"/>
+            <point key="canvasLocation" x="74" y="672"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="wjE-aQ-237">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" id="AMO-tu-3lv" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="Swg-pb-5Oa"/>
+                        <tabViewItem identifier="" id="Uxk-oW-TgS"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="Dt5-Cu-rmb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="AMO-tu-3lv" id="tns-uU-krc"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="Dt5-Cu-rmb" id="Q4m-Jr-5FO"/>
+                        <segue destination="a62-Lw-bBc" kind="relationship" relationship="tabItems" id="bDX-IC-sFK"/>
+                        <segue destination="j7z-ux-uYT" kind="relationship" relationship="tabItems" id="G6Q-ZN-gBN"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="b8X-N5-Gex" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="673"/>
+        </scene>
+        <!--JSON-->
+        <scene sceneID="qtl-Pq-xli">
+            <objects>
+                <viewController title="JSON" id="a62-Lw-bBc" sceneMemberID="viewController">
+                    <view key="view" id="Xj2-gq-nNm">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="w3V-U4-ANC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="379"/>
+        </scene>
+        <!--RAW-->
+        <scene sceneID="bsg-7b-8BD">
+            <objects>
+                <viewController title="RAW" id="j7z-ux-uYT" sceneMemberID="viewController">
+                    <view key="view" id="TJy-rn-9Ag">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="0TS-xA-KrM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="877"/>
         </scene>
     </scenes>
 </document>
