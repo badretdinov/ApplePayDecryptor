@@ -55,14 +55,19 @@ class MasterViewController: NSViewController {
             return
         }
         
-        let verifyStatus = self.tokenService.verifyToken(self.textView.string)
+        guard let decryptor = self.tokenService.tokenDecryptor(self.textView.string, certificate: cert.certificate, privateKey: pk) else {
+            self.showAlert(title: "Invalid token format", subtitle: "Please enter valid token and try again")
+            return
+        }
+        
+        let verifyStatus = decryptor.verifyToken()
         
         guard verifyStatus == .valid else {
             self.showAlert(forVerificationStatus: verifyStatus)
             return
         }
         
-        let decryptionStatus = self.tokenService.decryptToken(self.textView.string, certificate: cert.certificate, privateKey: pk)
+        let decryptionStatus = decryptor.decryptToken()
         
         switch decryptionStatus {
         case .dataDecrypted(let token):
