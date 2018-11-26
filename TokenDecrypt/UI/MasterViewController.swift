@@ -9,8 +9,6 @@
 import Cocoa
 
 class MasterViewController: NSViewController {
-    static let decryptedSegueId = "DecryptedTokenSegue"
-    
     @IBOutlet weak var popupButton: NSPopUpButton!
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var decryptButton: NSButton!
@@ -72,7 +70,7 @@ class MasterViewController: NSViewController {
         switch decryptionStatus {
         case .dataDecrypted(let token):
             self.lastDecryptedToken = token
-            self.performSegue(withIdentifier: MasterViewController.decryptedSegueId, sender: nil)
+            self.performSegue(withIdentifier: .decryptedTokenSegue, sender: nil)
         default:
             self.showAlert(forDecryptionStatus: decryptionStatus)
         }
@@ -144,6 +142,21 @@ extension MasterViewController {
             return "Decryption process has been failed"
         default:
             return ""
+        }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case .decryptedTokenSegue:
+            if var dest = segue.destinationController as? DecryptedTokenViewControllerProtocol {
+                dest.token = self.lastDecryptedToken
+            }
+        default:
+            break
         }
     }
 }
