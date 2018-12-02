@@ -36,7 +36,7 @@
 		7C5038A221AB0A01009C56E1 /* StoryboardSegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardSegueIdentifier.swift; sourceTree = "<group>"; };
 		7C5038A521AB1243009C56E1 /* JSONTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTokenViewController.swift; sourceTree = "<group>"; };
 		7C5038A721AB1254009C56E1 /* RawTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTokenViewController.swift; sourceTree = "<group>"; };
-		7C5B3BA421943B3600D55350 /* TokenDecrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenDecrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C5B3BA421943B3600D55350 /* ApplePayDecryptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplePayDecryptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5B3BA721943B3600D55350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C5B3BA921943B3600D55350 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		7C5B3BAB21943B3700D55350 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		7C5B3BA521943B3600D55350 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C5B3BA421943B3600D55350 /* TokenDecrypt.app */,
+				7C5B3BA421943B3600D55350 /* ApplePayDecryptor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			);
 			name = TokenDecrypt;
 			productName = TokenDecrypt;
-			productReference = 7C5B3BA421943B3600D55350 /* TokenDecrypt.app */;
+			productReference = 7C5B3BA421943B3600D55350 /* ApplePayDecryptor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -444,8 +444,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.badretdinov.TokenDecrypt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ApplePayDecryptor;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -468,8 +469,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.badretdinov.TokenDecrypt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ApplePayDecryptor;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 			};
