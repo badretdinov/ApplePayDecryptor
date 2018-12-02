@@ -61,7 +61,7 @@ class TokenService {
      - Returns: Decoded ApplePay token struct
      */
     fileprivate func token(fromString tokenStr: String) -> ApplePayToken? {
-        if let tokenData = Data(base64Encoded: tokenStr), let token = try? JSONDecoder().decode(ApplePayToken.self, from: tokenData) {
+        if let tokenData = (Data(base64Encoded: tokenStr) ?? tokenStr.data(using: .utf8)), let token = try? JSONDecoder().decode(ApplePayToken.self, from: tokenData) {
             return token
         } else {
             return nil
