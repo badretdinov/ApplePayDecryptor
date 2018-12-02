@@ -10,6 +10,7 @@ Certificates
 ------------
 Token decryption requires certificate and a private key associated with it.
 <img src="Images/KeychainCertificates.png" width=600/>
+
 Certificates without private key will be marked with `//no private key`.
 
 Features
