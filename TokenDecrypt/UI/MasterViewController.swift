@@ -30,7 +30,10 @@ class MasterViewController: NSViewController {
             self.certificates = try self.service.validCertificates()
             self.reloadPopUpButton()
         } catch {
-            
+            let alert = NSAlert.init()
+            alert.messageText = error.localizedDescription
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
         }
     }
     
