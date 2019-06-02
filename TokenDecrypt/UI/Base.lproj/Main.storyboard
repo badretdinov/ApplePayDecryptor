@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -674,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TokenDecrypt" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ApplePayDecryptor" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -704,7 +705,7 @@
         <!--Master View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="MasterViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="MasterViewController" customModule="ApplePayDecryptor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -755,6 +756,10 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="y9F-fD-gI6"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="yDo-yk-GnS"/>
                                 </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="D07-3s-jqE">
+                                    <rect key="frame" x="-100" y="-100" width="520" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MBP-Cf-ko6">
                                     <rect key="frame" x="505" y="1" width="16" height="198"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -798,7 +803,7 @@
                     </view>
                     <connections>
                         <outlet property="decryptButton" destination="IzE-ZY-BzT" id="dQx-3d-1z4"/>
-                        <outlet property="popupButton" destination="d4A-wE-7CK" id="YSR-79-LJw"/>
+                        <outlet property="popupButton" destination="d4A-wE-7CK" id="Up3-2O-41R"/>
                         <outlet property="statusLabel" destination="8hf-4D-nTK" id="aqJ-gD-5Tn"/>
                         <outlet property="textView" destination="7JJ-8D-FLo" id="yqo-S7-U7N"/>
                         <segue destination="AMO-tu-3lv" kind="modal" identifier="DecryptedTokenSegue" id="xfM-bI-akX"/>
@@ -807,12 +812,12 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="le7-mn-RZ2"/>
             </objects>
-            <point key="canvasLocation" x="74" y="672"/>
+            <point key="canvasLocation" x="75" y="696"/>
         </scene>
         <!--Decrypted View Controller-->
         <scene sceneID="wjE-aQ-237">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="AMO-tu-3lv" customClass="DecryptedViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="AMO-tu-3lv" customClass="DecryptedViewController" customModule="ApplePayDecryptor" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="Swg-pb-5Oa"/>
                         <tabViewItem identifier="" id="Uxk-oW-TgS"/>
@@ -838,7 +843,7 @@
         <!--JSON-->
         <scene sceneID="qtl-Pq-xli">
             <objects>
-                <viewController title="JSON" id="a62-Lw-bBc" customClass="JSONTokenViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="JSON" id="a62-Lw-bBc" customClass="JSONTokenViewController" customModule="ApplePayDecryptor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Xj2-gq-nNm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -972,7 +977,7 @@
         <!--RAW-->
         <scene sceneID="bsg-7b-8BD">
             <objects>
-                <viewController title="RAW" id="j7z-ux-uYT" customClass="RawTokenViewController" customModule="TokenDecrypt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="RAW" id="j7z-ux-uYT" customClass="RawTokenViewController" customModule="ApplePayDecryptor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="TJy-rn-9Ag">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -994,6 +999,10 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Wk8-00-gDo">
+                                    <rect key="frame" x="-100" y="-100" width="432" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="dw9-Wc-meY">
                                     <rect key="frame" x="417" y="1" width="16" height="282"/>
                                     <autoresizingMask key="autoresizingMask"/>

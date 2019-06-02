@@ -25,24 +25,50 @@ class MasterViewController: NSViewController {
         self.updateCertificates(self)
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case .decryptedTokenSegue:
+            if var dest = segue.destinationController as? DecryptedTokenViewControllerProtocol {
+                dest.token = self.lastDecryptedToken
+            }
+        default:
+            break
+        }
+    }
+    
     @IBAction func updateCertificates(_ sender: Any) {
         do {
             self.certificates = try self.service.validCertificates()
             self.reloadPopUpButton()
         } catch {
-            let alert = NSAlert.init()
-            alert.messageText = error.localizedDescription
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
+            self.showAlert(title: error.localizedDescription, subtitle: nil)
         }
     }
     
-    fileprivate func reloadPopUpButton() {
-        self.popupButton.removeAllItems()
-        self.popupButton.addItem(withTitle: "Select Certificate")
-        let certNames = self.certificates.map { $0.name }
-        self.popupButton.addItems(withTitles: certNames)
+    @objc fileprivate func importPKC12() {
+        guard let window = self.view.window else { return }
+        
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.canChooseFiles = true
+        panel.allowedFileTypes = ["p12"]
+        panel.beginSheetModal(for: window) { [weak self, weak panel] (response) in
+            guard let `self` = self, let panel = panel else {
+                return
+            }
+            if response == .OK, let url = panel.url {
+                self.loadCertificate(fromUrl: url)
+            } else {
+                self.popupButton.selectItem(at: 0)
+            }
+        }
     }
+    
     
     @IBAction func decryptToken(_ sender: Any) {
         guard self.popupButton.indexOfSelectedItem > 0 else {
@@ -78,6 +104,68 @@ class MasterViewController: NSViewController {
             self.showAlert(forDecryptionStatus: decryptionStatus)
         }
     }
+    
+    fileprivate func reloadPopUpButton() {
+        self.popupButton.removeAllItems()
+        self.popupButton.addItem(withTitle: "Select Certificate")
+        let certNames = self.certificates.map { $0.name }
+        self.popupButton.addItems(withTitles: certNames)
+        self.popupButton.menu?.addItem(withTitle: "Import from PKCS12", action: #selector(self.importPKC12), keyEquivalent: "")
+    }
+    
+    fileprivate func loadCertificate(fromUrl url: URL) {
+        guard let password = self.getPassword(forName: url.lastPathComponent) else { return }
+        do {
+            let newCerts = try self.service.importCertificate(fromUrl: url, password: password)
+            self.insertImportedCertificates(newCerts)
+            self.popupButton.selectItem(withTitle: newCerts.first?.name ?? "")
+        }
+        catch {
+            switch error {
+            case URLCertificateError.invalidFile:
+                self.showAlert(title: "Invalid PKC12 file", subtitle: nil)
+            case URLCertificateError.invalidCertificate:
+                self.showAlert(title: "Invalid certificate", subtitle: nil)
+            case URLCertificateError.invalidPassword:
+                self.showAlert(title: "Invalid password", subtitle: nil)
+            case URLCertificateError.passwordRequired:
+                self.showAlert(title: "A password is required to import \(url.lastPathComponent)", subtitle: nil)
+            default:
+                self.showAlert(title: "Unknown error", subtitle: nil)
+            }
+            self.popupButton.selectItem(at: 0)
+        }
+        
+    }
+    
+    fileprivate func getPassword(forName name: String) -> String? {
+        let alert = NSAlert()
+        alert.messageText = "Enter password for \(name)"
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        
+        let secure = NSSecureTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 24))
+        alert.accessoryView = secure
+        
+        let response = alert.runModal()
+        guard response == .alertFirstButtonReturn else {
+            self.popupButton.selectItem(at: 0)
+            return nil
+        }
+        
+        return secure.stringValue
+    }
+    
+    fileprivate func insertImportedCertificates(_ certs: [ApplePayCertificate]) {
+        let newCerts = certs.filter { !self.certificates.contains($0) }
+        
+        self.certificates.append(contentsOf: newCerts)
+        
+        let newIndex = self.popupButton.itemArray.endIndex - 1
+        for (index, cert) in newCerts.enumerated() {
+            self.popupButton.insertItem(withTitle: cert.name, at: newIndex + index)
+        }
+    }
 }
 
 extension MasterViewController: NSTextViewDelegate {
@@ -104,10 +192,10 @@ extension MasterViewController {
         self.showAlert(title: "Token decryption has been failed", subtitle: self.description(forVerificationStatus: status))
     }
     
-    fileprivate func showAlert(title: String, subtitle: String) {
+    fileprivate func showAlert(title: String, subtitle: String?) {
         let alert = NSAlert()
         alert.messageText = title
-        alert.informativeText = subtitle
+        alert.informativeText = subtitle ?? ""
         alert.alertStyle = .warning
         alert.runModal()
     }
@@ -145,21 +233,6 @@ extension MasterViewController {
             return "Decryption process has been failed"
         default:
             return ""
-        }
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        switch identifier {
-        case .decryptedTokenSegue:
-            if var dest = segue.destinationController as? DecryptedTokenViewControllerProtocol {
-                dest.token = self.lastDecryptedToken
-            }
-        default:
-            break
         }
     }
 }

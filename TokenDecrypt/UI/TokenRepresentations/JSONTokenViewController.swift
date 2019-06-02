@@ -23,11 +23,6 @@ class JSONTokenViewController: NSViewController, DecryptedTokenViewControllerPro
         }
     }
     fileprivate var rows: [RowData] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
     
     fileprivate func updateRows() {
         if let jsonData = self.token.data(using: .utf8),

@@ -20,4 +20,4 @@ Features
 - [x] EC_v1 signature verification
 - [x] EC_v1 token decryption
 - [x] Import from keychain
-- [ ] Import from PKCS#12 files
+- [x] Import from PKCS#12 files
